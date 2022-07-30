@@ -2,6 +2,7 @@ import $ from "jquery"
 $("body").append('<h2></h2>') //append once only
   $('h2').text("")// ? score
   //array of colors in (rgb)
+  let count = 0
   let colorcolor = ["rgb(255,0,0)", "rgb(255,165,0)", "rgb(255,255,0)", "rgb(0,100,0)", "rgb(0, 71, 171)", "rgb(195, 177, 225)", "rgb(75, 0, 130)"]
  
 
@@ -40,12 +41,13 @@ let downloadTimer = setInterval(function(){
     document.getElementById("countdown").innerHTML = "Finished";
   } else {
     //or else -> keep showing text of "timeleft"
-    document.getElementById("countdown").innerHTML = timeleft;
+    document.getElementById("countdown").innerHTML = timeleft + " sec";
   }
   // minus 1 everytime
   timeleft -= 1;
   //interval = 1000 milliseconds = 1 second
 }, 1000);
+document.getElementById("score").innerHTML = count;
 
 //get the squares which created in HTML
     const getBox = document.getElementsByClassName('square');
@@ -88,12 +90,13 @@ let downloadTimer = setInterval(function(){
           // const allNumbers = document.getElementsByClassName("square")
           // for (let j = 0; j < allNumbers.length; j++) {
           if (indexClicked == randomnumbers) {
+            count +=1
             //it will keep repeating
             console.log(indexClicked)
             console.log(randomnumbers)  
           } 
           else if (indexClicked != randomnumbers) {
-          alert("you lose")
+          return false
           }
         
       })
