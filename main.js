@@ -47,7 +47,7 @@ let downloadTimer = setInterval(function(){
   timeleft -= 1;
   //interval = 1000 milliseconds = 1 second
 }, 1000);
-document.getElementById("score").innerHTML = count;
+document.getElementById("score").innerHTML = "Score " + count;
 
 //get the squares which created in HTML
     const getBox = document.getElementsByClassName('square');
@@ -89,15 +89,16 @@ document.getElementById("score").innerHTML = count;
           //random number/odd color
           // const allNumbers = document.getElementsByClassName("square")
           // for (let j = 0; j < allNumbers.length; j++) {
-          if (indexClicked == randomnumbers) {
-            count +=1
+          if (indexClicked === randomnumbers) {
+            count++
+            console.log(count)
             //it will keep repeating
             console.log(indexClicked)
             console.log(randomnumbers)  
           } 
-          else if (indexClicked != randomnumbers) {
-          return false
-          }
+          // else if (indexClicked != randomnumbers) {
+          // return false
+          // }
         
       })
       }
