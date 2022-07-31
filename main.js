@@ -4,13 +4,16 @@ $("body").append('<h2></h2>') //append once only
   //array of colors in (rgb)
   let count = 0
   let colorcolor = ["rgb(255,0,0)", "rgb(255,165,0)", "rgb(255,255,0)", "rgb(0,100,0)", "rgb(0, 71, 171)", "rgb(195, 177, 225)", "rgb(75, 0, 130)"]
+  let x = []
+  let inputValue 
  
 
  //start screen -> show start screen and hide the rest 
 const showStart = () => {
-  $(".start").show("slow");
-  $(".score").hide();
-  $(".board").hide(); 
+  location.reload()
+  // $(".start").show("slow");
+  // $(".score").hide();
+  // $(".board").hide(); 
 };
 
 
@@ -31,19 +34,26 @@ const showScore = () => {
 
 
 const makeSquare = () => {
+
+  //$("#submit-button").on("click", () => {
+  document.getElementById("welcome").innerHTML = "Welcome " + inputValue
+
+  //})
   //countdown timer
   // setInterval(function, milleseconds)
-  let timeleft = 5;
+  let timeleft = 3;
 let downloadTimer = setInterval(function(){
   //if time = 0 or lesser, clear the interval and show "finished"
   if(timeleft <= 0){
-    clearInterval(downloadTimer);
+    //clearInterval(downloadTimer);
     document.getElementById("countdown").innerHTML = "Finished";
+    showScore();
   } else {
     //or else -> keep showing text of "timeleft"
     document.getElementById("countdown").innerHTML = timeleft + " sec";
   }
   // minus 1 everytime
+  
   timeleft -= 1;
   //interval = 1000 milliseconds = 1 second
 }, 1000);
@@ -81,9 +91,11 @@ document.getElementById("score").innerHTML = "Score " + count;
         }
         //when user click on the box
         $(".square").on("click", () => {
+          clearInterval(downloadTimer);
           //get the index of box being clicked
           const indexClicked = $(event.target).index(this);
           console.log(indexClicked)
+          
           
           //if the index of box being clicked is equal to the 
           //random number/odd color
@@ -91,10 +103,15 @@ document.getElementById("score").innerHTML = "Score " + count;
           // for (let j = 0; j < allNumbers.length; j++) {
           if (indexClicked === randomnumbers) {
             count++
+            
             console.log(count)
             //it will keep repeating
             console.log(indexClicked)
-            console.log(randomnumbers)  
+            console.log(randomnumbers) 
+           
+            //indexClicked.splice(0, indexClicked.length)
+            makeSquare()
+            
           } 
           // else if (indexClicked != randomnumbers) {
           // return false
@@ -107,19 +124,22 @@ document.getElementById("score").innerHTML = "Score " + count;
   
 const main = () => {
  
-  $("#startButton").on("click", showBoard)
+  $("#startButton").on("click", () => {
+    inputValue = $("#input-box").val();
+    console.log(inputValue);
+    $("#input-box").val("");
+    showBoard()
+  })
+  
   $("#gameButton").on("click", showScore)
   $("#restartButton").on("click", showStart)
-showStart();
-$("#submit-button").on("click", () => {
-  const inputValue = $("#input-box").val();
-  console.log(inputValue);
-  $("#input-box").val("");
- 
-
-});
-
+//showStart();
+// $("#submit-button").on("click", () => {
+//   inputValue = $("#input-box").val();
+//   console.log(inputValue);
+//   $("#input-box").val("");
 
 };
+
 
 $(main);
