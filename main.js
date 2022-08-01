@@ -5,7 +5,7 @@ $("body").append('<h2></h2>') //append once only
   let count = 0
   let colorcolor = ["rgb(255,0,0)", "rgb(255,165,0)", "rgb(255,255,0)", "rgb(0,100,0)", "rgb(0, 71, 171)", "rgb(195, 177, 225)", "rgb(75, 0, 130)"]
   let x = []
-  let inputValue 
+ let inputValue 
  
 
  //start screen -> show start screen and hide the rest 
@@ -25,6 +25,12 @@ const showBoard = () => {
    makeSquare() 
 };
 
+const showMedium = () => {
+  $(".board1").show("slow");
+  $(".start").hide();
+  $(".score").hide();
+  makeMoreSquares()
+}
 //score screen -> show score screen and hide the rest
 const showScore = () => {
   $(".score").show("slow");
@@ -42,7 +48,7 @@ const makeSquare = () => {
   //countdown timer
   // setInterval(function, milleseconds)
   let timeleft = 3;
-let downloadTimer = setInterval(function(){
+  let downloadTimer = setInterval(function(){
   //if time = 0 or lesser, clear the interval and show "finished"
   if(timeleft <= 0){
     //clearInterval(downloadTimer);
@@ -72,7 +78,7 @@ document.getElementById("score").innerHTML = "Score " + count;
 
         //rgb of odd color is slightly different from randomcolors
         let randomRgb = 70 + (Math.floor(Math.random() * 100))
-        changeToInt[2] = randomRgb
+        //changeToInt[2] = randomRgb
         const rgbCode = "rgb" + "(" + changeToInt[0] + "," + changeToInt[1] + "," + randomRgb + ")"
         console.log(rgbCode)
 
@@ -113,11 +119,70 @@ document.getElementById("score").innerHTML = "Score " + count;
             makeSquare()
             
           } 
-          // else if (indexClicked != randomnumbers) {
-          // return false
-          // }
+          else if (indexClicked !== randomnumbers) {
+          return false
+          //alert("oh no")
+          
+          }
         
       })
+      }
+  
+
+      
+      const makeMoreSquares = () => {
+        document.getElementById("welcome1").innerHTML = "Welcome " + inputValue
+        let timeleft = 5;
+        let downloadTimer = setInterval(function(){
+        if(timeleft <= 0){
+        document.getElementById("countdown1").innerHTML = "Finished";
+      showScore();
+      } else {
+     document.getElementById("countdown1").innerHTML = timeleft + " sec";
+  }
+  timeleft -= 1;  
+}, 1000);
+document.getElementById("score1").innerHTML = "Score " + count;
+const getMoreBoxes = document.getElementsByClassName('square1');
+let randomcolors = colorcolor[Math.floor(Math.random() * colorcolor.length)]
+    
+        let oddcolor = randomcolors.split(/[(\)]/)
+        console.log(oddcolor)
+        let changeToInt = oddcolor[1].split(",").map(element => (parseInt(element)))
+        console.log(changeToInt)
+        let randomRgb = 70 + (Math.floor(Math.random() * 100))
+        const rgbCode = "rgb" + "(" + changeToInt[0] + "," + changeToInt[1] + "," + randomRgb + ")"
+        console.log(rgbCode)
+        let randomnumbers = Math.floor(Math.random() * 25)
+         console.log(randomnumbers)
+        for ( let i=0; i< getMoreBoxes.length; i++ ) {
+        // if the random number is not equal to the index of the box -> random color
+        // will be assigned
+          if (getMoreBoxes[i] !== getMoreBoxes[randomnumbers]) {
+            getMoreBoxes[i].style.backgroundColor = randomcolors
+            //if the random number is equal to index of the box -> odd color
+            //will be assigned
+          } else
+          getMoreBoxes[randomnumbers].style.backgroundColor = rgbCode
+        }
+        
+        const game = () => {
+          clearInterval(downloadTimer);
+          const indexClicked = $(event.target).index(this);
+          if (indexClicked === randomnumbers) {
+            count++
+            showMedium();
+          } else showScore()
+        }
+        const element = document.getElementsByClassName("square1");
+        element.addEventListener("click", game());
+        //when user click on the box
+        // $(".square").on("click", () => {
+        
+          
+        //   console.log(indexClicked)   
+          
+
       }
 
   
@@ -130,11 +195,16 @@ const main = () => {
     $("#input-box").val("");
     showBoard()
   })
-  
+  $("#mediumbutton").on("click", () => {
+    inputValue = $("#input-box").val();
+    console.log(inputValue);
+    $("#input-box").val("");
+    showMedium()
+  })
   $("#gameButton").on("click", showScore)
   $("#restartButton").on("click", showStart)
 //showStart();
-// $("#submit-button").on("click", () => {
+
 //   inputValue = $("#input-box").val();
 //   console.log(inputValue);
 //   $("#input-box").val("");

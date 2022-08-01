@@ -8,7 +8,15 @@
     <link rel="icon" type="image/svg+xml" href="http://localhost:5173/vite.svg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Odd Color</title>
-
+    <style>
+      .start {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    </style>
+   
     <style>
       #container {
         margin: 20px auto;
@@ -29,15 +37,33 @@
       float: left;
   }
   </style>
+
+<style>
+  .square1 {
+    background: #9E9E9E;
+    border: black 1px solid;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 0;
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+}
+</style>
   
   </head>
   <body>
      
     <div class="start">
+      
+      <!-- <img src="images/pastel.jpg" class="img-responsive" alt="Responsive image"> -->
+
     <h1>Choose The Odd Color</h1>
-    <button id="startButton">Let's Go!</button> 
+    
     <input type="text" placeholder="enter your name" id="input-box">
-    <!-- <button id="submit-button">Submit Your Name</button> -->
+    <button id="startButton">Easy</button> 
+    <button id="mediumbutton">Medium</button>
   </div>
 
   
@@ -46,9 +72,7 @@
     <div id="welcome">Welcome</div>
     <div id="score">Score</div>
     <div id="countdown"></div>
-    
     <div id="container">
-     
       <div class="square"></div>
       <div class="square"></div>
       <div class="square"></div>
@@ -58,10 +82,43 @@
       <div class="square"></div>
       <div class="square"></div>
       <div class="square"></div>
-    <h2></h2></div>
+    </div>
+    </div>
   
-    
-</div>
+    <div class="board1" style="display: none;">
+      <h1>Game Board</h1>
+      <div id="welcome1">Welcome</div>
+      <div id="score1">Score</div>
+      <div id="countdown1"></div>
+      <div id="container">
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      <div class="square1"></div>
+      </div>
+    </div>
+
   <div class="score" style="display: none;">
     <h1>Score Board</h1>
     <button id="restartButton">Restart</button>
