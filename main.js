@@ -3,10 +3,8 @@ import $, { get } from "jquery"
   //array of colors in (rgb)
   let count = 0
   let colorcolor = ["rgb(255,0,0)", "rgb(255,165,0)", "rgb(255,255,0)", "rgb(0,100,0)", "rgb(0, 71, 171)", "rgb(195, 177, 225)", "rgb(75, 0, 130)"]
-  //let x = []
+  let x = []
  let inputValue 
- let randomnum1 = Math.floor(Math.random()*25)
- const oneSquare = document.getElementById('square2')
   
 
  //start screen -> show start screen and hide the rest 
@@ -50,7 +48,7 @@ const countDownTimer = () => {
     clearInterval(downloadTimer);
     document.getElementById("countdown").innerHTML = "Finished";
     showScore();
-    //scoreBoard();
+    scoreBoard();
   } else {
     //or else -> keep showing text of "timeleft"
     document.getElementById("countdown").innerHTML = timeleft + " sec";
@@ -118,22 +116,25 @@ document.getElementById("score").innerHTML = "Score " + count;
           }       
       })
       }
+
+
       const makeMoreSquares = () => {
         document.getElementById("welcome1").innerHTML = "Welcome " + inputValue
         let timeleft1 = 15;
         
-  let downloadTimer1 = setInterval(function(){
-  //if time = 0 or lesser, clear the interval and show "finished"
-  if(timeleft1 <= 0){
-    clearInterval(downloadTimer1);
-    document.getElementById("countdown1").innerHTML = "Finished";
-    showScore();
-    scoreBoard();
-    console.log(scoreBoard)
-  } else {
-    //or else -> keep showing text of "timeleft"
-    document.getElementById("countdown1").innerHTML = timeleft1 + " sec";
-  }
+        let downloadTimer1 = setInterval(function(){
+        //if time = 0 or lesser, clear the interval and show "finished"
+        if(timeleft1 <= 0){
+       clearInterval(downloadTimer1);
+       document.getElementById("countdown1").innerHTML = "Finished";
+       //clearInterval(downloadTimer1);
+      showScore();
+    
+      } else {
+     //or else -> keep showing text of "timeleft"
+      document.getElementById("countdown1").innerHTML = timeleft1 + " sec";
+  
+      }
   // minus 1 everytime
   timeleft1 -= 1;
   
@@ -142,7 +143,8 @@ document.getElementById("score").innerHTML = "Score " + count;
 
 document.getElementById("score1").innerHTML = "Score " + count;
 const getMoreBoxes = document.getElementsByClassName('square1');
-let randomcolors1 = colorcolor[Math.floor(Math.random() * colorcolor.length)]
+
+//console.log(randomnum1)
     
         
           function random_bg_color(){
@@ -152,29 +154,35 @@ let randomcolors1 = colorcolor[Math.floor(Math.random() * colorcolor.length)]
             var bgColor = "rgb(" + x + "," + y + "," + z + ")";
             return bgColor;
         }
+        let randomnum1 = Math.floor(Math.random()*25)
           for (let k = 0; k < getMoreBoxes.length; k++) {
+            
+            const oneSquare = document.getElementById('square2')
+            //if (oneSquare[k] === getMoreBoxes[randomnum1]) {
+            oneSquare.style.backgroundColor = getMoreBoxes[randomnum1].style.backgroundColor
+           // } else {
             getMoreBoxes[k].style.backgroundColor = random_bg_color();
             console.log(random_bg_color)
-            
-            oneSquare.style.backgroundColor = getMoreBoxes[randomnum1].style.backgroundColor
-            console.log(randomnum1)
-    
-              }
-      }
+            }
+
+              
+      
         $(".square1").on("click", () => {
-          // clearInterval(downloadTimer1);
+          
           //get the index of box being clicked
           let indexClicked1 = $(event.target).index(this);
-          console.log(indexClicked1 + "hi")
-          console.log(randomnum1 + "hello")
+          console.log(indexClicked1 + "index num")
+          console.log(randomnum1 + "randomnum")
+          
           if (indexClicked1 === randomnum1) {
             count++
             console.log(count)
             
             makeMoreSquares()
+            
           }       
       })        
-      
+    }
       
 
       const scoreBoard = () => {
@@ -206,9 +214,8 @@ const main = () => {
     $("#input-box").val("");
     showMedium()
   })
-  $("#gameButton").on("click", showScore)
+ // $("#gameButton").on("click", showScore)
   $("#restartButton").on("click", showStart)
-
 };
 
 
