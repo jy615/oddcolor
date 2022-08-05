@@ -1,4 +1,4 @@
-import $, { get } from "jquery"
+import {$} from "jquery"
 
   //array of colors in (rgb)
   let count = 0
