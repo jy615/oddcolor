@@ -1,5 +1,6 @@
 # oddcolor
-About this game:
+
+**About this game:**
 
 Odd Color is a fun game designed to test player’s reaction time within certain period of time. There are 2 levels of challenges: Easy and Medium. It is a single-player game and the player need to score as much as possible within the timeframe.
 
