@@ -7,13 +7,12 @@ Odd Color is a fun game designed to test player’s reaction time within certain
 
 **Instructions:**
 
-1. The aim in this game is simple; try to catch the odd color and the score will add up after every correct catch.
-2. For the medium level, try to catch the designated color being assigned.
-3. Key in your name
-4. Choose ‘Easy’ or ‘Medium’
-5. Play the game
-6. Click ‘Restart’ to play the game again
-7. HAVE FUNN!
+The aim in this game is simple; try to catch the odd color and the score will add up after every correct catch. For the medium level, try to catch the designated color being assigned.
+1. Key in your name
+2. Choose ‘Easy’ or ‘Medium’
+3. Play the game
+4. Click ‘Restart’ to play the game again
+5. HAVE FUNN!
 
 **Deployment:**
 Click here to play the game (https://oddcolor.vercel.app/)
