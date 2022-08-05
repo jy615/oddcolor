@@ -1,4 +1,4 @@
-
+:blue_heart::blue_heart::blue_heart::blue_heart::blue_heart::blue_heart:
 **About this game:**
 
 Odd Color is a fun game designed to test player’s reaction time within certain period of time. There are 2 levels of challenges: Easy and Medium. It is a single-player game and the player need to score as much as possible within the timeframe.
@@ -15,3 +15,4 @@ Odd Color is a fun game designed to test player’s reaction time within certain
 
 **Deployment:**
 Click here to play the game (https://oddcolor.vercel.app/)
+:blue_heart::blue_heart::blue_heart::blue_heart::blue_heart::blue_heart:
