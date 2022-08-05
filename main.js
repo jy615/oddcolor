@@ -111,8 +111,8 @@ document.getElementById("score").innerHTML = "Score " + count;
           if (indexClicked === randomnumbers) {
             count++
             makeSquare()
-          indexClicked = -1
-          randomnumbers = -2
+          //indexClicked = -1
+          //randomnumbers = -2
           }       
       })
       }
